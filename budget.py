@@ -29,4 +29,22 @@ class Budget:
     def __init__(self, monthly_income): 
         self.monthly_income = monthly_income
         self.expenses = []
-        self.savings = [] 
+        self.savings = []
+
+    def add_expense(self, amount, category_name, description="", category_type=None):
+        """
+        Function adds an expense to needs or wants categories
+        """
+        pass
+
+    
+    def add_saving(self, amount, description=""):
+        """
+        Add explicit savings contribution
+        Args:
+            amount (float): savings amount
+            description (str): optional description
+        """
+        if amount < 0:
+            raise ValueError("Savings amount cannot be negative")
+        self.savings.append({'amount': amount, 'description': description})
