@@ -25,3 +25,8 @@ class Budget:
         'phone bill': 'need',
         'internet bills': 'need'
     }
+    
+    def __init__(self, monthly_income): 
+        self.monthly_income = monthly_income
+        self.expenses = []
+        self.savings = [] 
