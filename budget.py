@@ -53,14 +53,14 @@ class Budget:
 
     def get_category_total(self, category_type):
         """This calculates the total for needs or wants categories"""
-	    pass
+        pass
      
     
     def get_total_savings(self):
         """Return the total of savings and remaining income"""
-	    pass
+        pass
     
     def get_total_expenses(self):
         """Return sum of needs + wants expenses"""
-	    pass
+        pass
 
