@@ -1,6 +1,4 @@
-# File 1: budget.py
-# This file takes the user input of expense and income and calculates the total expenses, based on different categories,
-# and savings.
+# This file takes the user input of expense and income and calculates the total expenses, based on different categories and savings
 
 
 class Budget:
