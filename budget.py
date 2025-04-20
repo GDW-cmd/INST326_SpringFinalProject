@@ -10,3 +10,18 @@ class Budget:
         expenses (list): user's expenses {amount, category_name, category_type, description}
         savings (list):user savings {amount, description}
     '''
+
+    # create a dictionary of default categories
+    DEFAULT_CATEGORIES = {
+        'rent': 'need',
+        'mortgage': 'need',
+        'groceries': 'need',
+        'dine-in/take out': 'want',
+        'insurance': 'need',
+        'utilities': 'need',
+        'entertainment subscriptions': 'want',
+        'social events': 'want',
+        'gas': 'need',
+        'phone bill': 'need',
+        'internet bills': 'need'
+    }
