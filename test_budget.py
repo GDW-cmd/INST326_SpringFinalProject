@@ -9,3 +9,21 @@ def setUp(self):
     # add expenses
     self.budget.add_expense(100, 'need', 'Rent') 
     self.budget.add_expense(200, 'want', 'Entertainment')
+
+def test_add_expense(self):
+    '''
+    test add_expense method
+    '''
+    pass 
+
+def test_add_saving(self):
+    '''
+    test add_saving method
+    '''
+    pass
+
+def test_get_category_total(self):
+    '''
+    test get_category_total method
+    '''
+    pass
