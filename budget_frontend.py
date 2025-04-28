@@ -3,6 +3,10 @@
 import streamlit as st
 from budget import Budget
 
+#Initialize Empty Dictionary
+if 'expenses' not in st.session_state:
+    st.session_state.expenses = {}
+    
 st.title("Basic Budget Tracker") #Title
 
 monthly_income = st.number_input("Monthly Income", min_value = 0.0, step = 0.01, format = "%0.2f") #Monthly income input
@@ -18,4 +22,11 @@ with st.form("expense_form"): #Expense form for all expense inputs, expense: cos
         if not expense_name:
             st.warning("Please enter an expense name.") #If no expense name.
         else:
+            st.session_state.expenses[expense_name] = {'cost': expense_cost, 'category': expense_category}
             st.success(f"Added '{expense_name}' as a {expense_category} with monthly cost of ${expense_cost}.") #Displays last expense and category + cost.
+
+st.subheader("Your Expenses")
+if st.session_state.expenses:
+    st.write(st.session_state.expenses)
+else:
+    st.write("None")
