@@ -10,8 +10,11 @@ class Budget:
         savings (list):user savings {amount, description}
     '''
 
-    """
-    Will add later, predetermined expenses with categories. 
+
+
+    """ Will do later
+
+    # create a dictionary of default categories
     DEFAULT_CATEGORIES = {
         'rent': 'need',
         'mortgage': 'need',
@@ -27,10 +30,11 @@ class Budget:
     }
     """
     
-    def __init__(self, monthly_income): 
-        self.monthly_income = monthly_income
-        self.expenses = []
-        self.savings = []
+
+
+    def __init__(self, expense_dict): 
+        self.expense_dict = expense_dict
+        
 
     def add_expense(self, amount, category_name, description="", category_type=None):
         """
@@ -38,30 +42,16 @@ class Budget:
         """
         pass
 
+    def get_total_savings(self):
+        """Return the total of savings"""
+        pass
     
-    def add_saving(self, amount, description=""):
-        """
-        Add explicit savings contribution
-        Args:
-            amount (float): savings amount
-            description (str): optional description
-        """
-        if amount < 0:
-            raise ValueError("Savings amount cannot be negative")
-        self.savings.append({'amount': amount, 'description': description})
-        
+    def get_total_needs(self):
+        """Return sum of needs"""
         pass
 
-    def get_category_total(self, category_type):
-        """This calculates the total for needs or wants categories"""
-        pass
-     
-    
-    def get_total_savings(self):
-        """Return the total of savings and remaining income"""
+    def get_total_wants(self):
+        """Return sum of wants"""
         pass
     
-    def get_total_expenses(self):
-        """Return sum of needs + wants expenses"""
-        pass
 
