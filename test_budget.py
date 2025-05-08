@@ -13,7 +13,7 @@ class TestBudget(unittest.TestCase):
             'video games': {'want': 120.00, 'category': 'Want'},
             'saving account': {'want': 300.00, 'category': 'Saving'}
         }
-    pass
+        self.budget = Budget(self.predefined_expense_dict)
     
     def test_get_total_savings(self):
         self.assertEqual(self.budget.get_total_saving(),300)
