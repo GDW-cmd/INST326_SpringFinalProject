@@ -34,6 +34,7 @@ def test_calculate_ideal(self):
     test calculate_ideal method
     '''
     pass
+    
 
 def test_compare_with_ideal(self):
     '''
