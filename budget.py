@@ -44,7 +44,9 @@ class Budget:
 
     def get_total_savings(self):
         """Return the total of savings"""
-        pass
+        return sum(
+            expense['cost'] for expense in self.expense_dict.values() if expense['category'].lower() == 'saving')
+        
     
     def get_total_needs(self):
         """Return sum of needs"""
