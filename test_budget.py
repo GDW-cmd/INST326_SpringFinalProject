@@ -27,4 +27,4 @@ class TestBudget(unittest.TestCase):
         self.assertEqual(self.budget.get_total_want(),190)
       
 if __name__ == '__main__':
-    unittest() 
+    unittest.main() 
