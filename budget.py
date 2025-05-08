@@ -11,27 +11,6 @@ class Budget:
     '''
 
 
-
-    """ Will do later
-
-    # create a dictionary of default categories
-    DEFAULT_CATEGORIES = {
-        'rent': 'need',
-        'mortgage': 'need',
-        'groceries': 'need',
-        'dine-in/take out': 'want',
-        'insurance': 'need',
-        'utilities': 'need',
-        'entertainment subscriptions': 'want',
-        'social events': 'want',
-        'gas': 'need',
-        'phone bill': 'need',
-        'internet bills': 'need'
-    }
-    """
-    
-
-
     def __init__(self, expense_dict): 
         self.expense_dict = expense_dict
         
