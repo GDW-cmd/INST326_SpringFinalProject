@@ -17,7 +17,7 @@ class TestBudget(unittest.TestCase):
         self.budget = Budget(self.predefined_expense_dict) 
     
     def test_get_total_savings(self):
-        self.assertEqual(self.budget.get_total_saving(),300)
+        self.assertEqual(self.budget.get_total_savings(),300)
         
     
     def test_get_total_needs(self):
