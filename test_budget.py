@@ -6,17 +6,18 @@ from budget_analysis import BudgetAnalysis
 
 class TestBudget(unittest.TestCase):
     def setUp(self):
+        """Initialize test data before each test"""
         self.predefined_expense_dict = {
             'rent': {'cost': 1500.00, 'category': 'Need'},
             'groceries': {'cost': 320.00, 'category': 'Need'},
-            'subscriptions': {'want': 70.00, 'category': 'Want'},
-            'video games': {'want': 120.00, 'category': 'Want'},
-            'saving account': {'want': 300.00, 'category': 'Saving'}
+            'subscriptions': {'cost': 70.00, 'category': 'Want'},
+            'video games': {'cost': 120.00, 'category': 'Want'},
+            'saving account': {'cost': 300.00, 'category': 'Saving'}
         }
         self.budget = Budget(self.predefined_expense_dict) 
     
     def test_get_total_savings(self):
-        self.assertEqual(self.budget.get_total_savings(),300) 
+        self.assertEqual(self.budget.get_total_saving(),300)
         
     
     def test_get_total_needs(self):
