@@ -36,12 +36,6 @@ class Budget:
         self.expense_dict = expense_dict
         
 
-    def add_expense(self, amount, category_name, description="", category_type=None):
-        """
-        Function adds an expense to needs or wants categories
-        """
-        pass
-
     def get_total_savings(self):
         """Return the total of savings"""
         return sum(
