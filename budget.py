@@ -23,10 +23,12 @@ class Budget:
     
     def get_total_needs(self):
         """Return sum of needs"""
-        pass
+        return sum(
+            expense['cost'] for expense in self.expense_dict.values() if expense['category'].lower() == 'need')
 
     def get_total_wants(self):
         """Return sum of wants"""
-        pass
+        return sum(
+            expense['cost'] for expense in self.expense_dict.values() if expense['category'].lower() == 'want')
     
 
