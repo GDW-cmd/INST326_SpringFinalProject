@@ -3,4 +3,4 @@
 import matplotlib.pyplot as plt
 
 class BudgetVisualization:
-    pass
+    pass 

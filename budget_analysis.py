@@ -19,3 +19,13 @@ class BudgetAnalysis:
     
     def compare_with_ideal(self):
         """will compare user's expenses with ideal budget."""
+        actual = {
+            'need': self.budget.get_category_total('need'),
+            'want': self.budget.get_category_total('want'),
+            'saving': self.budget.get_total_savings()
+        }
+        ideal = self.calculate_ideal()
+        difference = {
+            key: actual[key] - ideal[key] for key in ideal
+        }
+        return {'actual': actual, 'ideal': ideal, 'difference': difference} 
