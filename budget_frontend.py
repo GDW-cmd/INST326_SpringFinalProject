@@ -29,4 +29,4 @@ st.subheader("Your Expenses")
 if st.session_state.expenses:
     st.write(st.session_state.expenses)
 else:
-    st.write("None")
+    st.write("None") 
