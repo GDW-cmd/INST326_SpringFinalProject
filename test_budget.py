@@ -13,10 +13,10 @@ class TestBudget(unittest.TestCase):
             'video games': {'want': 120.00, 'category': 'Want'},
             'saving account': {'want': 300.00, 'category': 'Saving'}
         }
-        self.budget = Budget(self.predefined_expense_dict)
+        self.budget = Budget(self.predefined_expense_dict) 
     
     def test_get_total_savings(self):
-        self.assertEqual(self.budget.get_total_saving(),300)
+        self.assertEqual(self.budget.get_total_savings(),300) 
         
     
     def test_get_total_needs(self):
@@ -24,7 +24,7 @@ class TestBudget(unittest.TestCase):
         
 
     def test_get_total_wants(self):
-        self.assertEqual(self.budget.get_total_want(),190)
+        self.assertEqual(self.budget.get_total_wants(),190)
       
 if __name__ == '__main__':
     unittest.main() 
