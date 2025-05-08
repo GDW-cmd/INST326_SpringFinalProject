@@ -30,10 +30,11 @@ class Budget:
     }
     """
     
-    def __init__(self, monthly_income): 
-        self.monthly_income = monthly_income
-        self.expenses = []
-        self.savings = []
+
+
+    def __init__(self, expense_dict): 
+        self.expense_dict = expense_dict
+        
 
     def add_expense(self, amount, category_name, description="", category_type=None):
         """
