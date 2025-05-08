@@ -29,6 +29,6 @@ class Budget:
     def get_total_wants(self):
         """Return sum of wants"""
         return sum(
-            expense['cost'] for expense in self.expense_dict.values() if expense['category'].lower() == 'want')
+            expense['cost'] for expense in self.expense_dict.values() if expense['category'].lower() == 'want') 
     
 
