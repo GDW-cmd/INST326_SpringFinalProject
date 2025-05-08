@@ -10,7 +10,8 @@ class Budget:
         savings (list):user savings {amount, description}
     '''
 
-    # create a dictionary of default categories
+    """
+    Will add later, predetermined expenses with categories. 
     DEFAULT_CATEGORIES = {
         'rent': 'need',
         'mortgage': 'need',
@@ -24,6 +25,7 @@ class Budget:
         'phone bill': 'need',
         'internet bills': 'need'
     }
+    """
     
     def __init__(self, monthly_income): 
         self.monthly_income = monthly_income
