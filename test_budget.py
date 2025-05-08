@@ -14,3 +14,17 @@ class TestBudget(unittest.TestCase):
             'saving account': {'want': 300.00, 'category': 'Saving'}
         }
     pass
+    
+    def test_get_total_savings(self):
+        self.assertEqual(self.budget.get_total_saving(),300)
+        
+    
+    def test_get_total_needs(self):
+        self.assertEqual(self.budget.get_total_needs(),1820)
+        
+
+    def test_get_total_wants(self):
+        self.assertEqual(self.budget.get_total_want(),190)
+      
+if __name__ == '__main__':
+    unittest() 
