@@ -30,5 +30,13 @@ class Budget:
         """Return sum of wants"""
         return sum(
             expense['cost'] for expense in self.expense_dict.values() if expense['category'].lower() == 'want') 
+     
+    def get_all_totals(self):
+        """Returns dict of category : cost"""
+        return {
+            "Needs": self.get_total_needs(),
+            "Wants": self.get_total_wants(),
+            "Savings": self.get_total_savings()
+        }
     
 
