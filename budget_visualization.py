@@ -1,12 +1,14 @@
 # This class generates a bar chart of the budget categories and their amounts using matplotlib.
 
 import matplotlib.pyplot as plt
+from budget import Budget
 
 class BudgetVisualization:
     
     # function to generate a bar chart of the budget categories and their amounts
-    def __init__(self, expense_dict):
-        self.expense_dict = expense_dict
+    def __init__(self, expense_dict, monthly_income):
+        self.budget = Budget(expense_dict)
+        self.monthly_income = monthly_income
     
     def user_category_chart(self):
         """Chart of all categories"""
