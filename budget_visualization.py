@@ -28,11 +28,15 @@ class BudgetVisualization:
 
         return fig
 
-        pass
 
     def user_individual_chart(self):
         """Chart of each individual expense"""
-        pass
+
+        labels = list(self.budget.expense_dict.keys())
+        values = [expense['cost'] for expense in self.budget.expense_dict.values()]
+        fig, ax = plt.subplots()
+        ax.pie(values, labels=labels, autopct='%1.1f%%')
+        return fig
 
     def comparition_chart(self):
         """Chart comparison to ideal budget"""
