@@ -25,7 +25,7 @@ class BudgetVisualization:
         fig.savefig('myplot.png', transparent=True)
         fig.set_facecolor('none')
         ax.set_facecolor('none')
-        ax.pie(values, labels=labels, autopct='%1.1f%%')
+        ax.pie(values, labels=labels, autopct='%1.1f%%', textprops={'color':"w"})
 
         return fig
 
@@ -39,7 +39,7 @@ class BudgetVisualization:
         fig.savefig('myplot.png', transparent=True)
         fig.set_facecolor('none')
         ax.set_facecolor('none')
-        ax.pie(values, labels=labels, autopct='%1.1f%%')
+        ax.pie(values, labels=labels, autopct='%1.1f%%', textprops={'color':"w"})
         
         return fig
 
