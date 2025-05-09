@@ -19,11 +19,12 @@ class BudgetVisualization:
     def user_category_chart(self):
         """Chart of all categories"""
         totals = self.calculate_totals_cat()
-
         labels = list(totals.keys())
         values = list(totals.values())
-
         fig, ax = plt.subplots()
+        fig.savefig('myplot.png', transparent=True)
+        fig.set_facecolor('none')
+        ax.set_facecolor('none')
         ax.pie(values, labels=labels, autopct='%1.1f%%')
 
         return fig
@@ -31,11 +32,15 @@ class BudgetVisualization:
 
     def user_individual_chart(self):
         """Chart of each individual expense"""
-
+       
         labels = list(self.budget.expense_dict.keys())
         values = [expense['cost'] for expense in self.budget.expense_dict.values()]
         fig, ax = plt.subplots()
+        fig.savefig('myplot.png', transparent=True)
+        fig.set_facecolor('none')
+        ax.set_facecolor('none')
         ax.pie(values, labels=labels, autopct='%1.1f%%')
+        
         return fig
 
     def comparition_chart(self):
