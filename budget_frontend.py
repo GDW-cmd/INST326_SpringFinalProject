@@ -2,6 +2,7 @@
 
 import streamlit as st
 from budget import Budget
+from budget_visualization import BudgetVisualization
 
 #Initialize Empty Dictionary
 if 'expenses' not in st.session_state:
@@ -29,4 +30,8 @@ st.subheader("Your Expenses")
 if st.session_state.expenses:
     st.write(st.session_state.expenses)
 else:
-    st.write("None")  
+    st.write("None")
+
+if st.session_state.expenses and monthly_income > 0:
+    viz = BudgetVisualization(st.session_state.expenses, monthly_income)
+    st.pyplot(viz.user_category_chart())
