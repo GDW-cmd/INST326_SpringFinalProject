@@ -23,6 +23,11 @@ class BudgetVisualization:
         labels = list(totals.keys())
         values = list(totals.values())
 
+        fig, ax = plt.subplots()
+        ax.pie(values, labels=labels, autopct='%1.1f%%')
+
+        return fig
+
         pass
 
     def user_individual_chart(self):
