@@ -10,7 +10,7 @@ class BudgetVisualization:
         self.budget = Budget(expense_dict)
         self.monthly_income = monthly_income
 
-    def calculate_total_cat(self):
+    def calculate_totals_cat(self):
         """Gets totals from budget.py and also remaining unallocated cost"""
         totals = self.budget.get_all_totals()
         totals["Remaining"] = self.monthly_income - sum(totals.values())
@@ -18,6 +18,11 @@ class BudgetVisualization:
     
     def user_category_chart(self):
         """Chart of all categories"""
+        totals = self.calculate_totals_cat()
+
+        labels = list(totals.keys())
+        values = list(totals.values())
+
         pass
 
     def user_individual_chart(self):
