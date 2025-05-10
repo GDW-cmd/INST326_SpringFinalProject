@@ -16,7 +16,7 @@ if 'expenses_df' not in st.session_state:
 st.title("Personal Budget Tracker 💰") #Title 
 
 
-tab1, tab2, tab3 = st.tabs(["Input 📝", "Spending Analysis 📊", "Comparative Analysis 🎯"]) #Creates tab for input and output(charts for now)
+tab1, tab2, tab3 = st.tabs(["Input", "Output:Charts", "Ideal Budget Comparitive"]) #Creates tab for input and output(charts for now)
 
 with tab1:
     monthly_income = st.number_input("Monthly Income", min_value = 0.0, step = 0.01, format = "%0.2f") #Monthly income input
@@ -41,8 +41,8 @@ with tab1:
             )
 
     st.subheader("Your Expenses")
-    if not st.session_state.expenses_df.empty:
-        st.dataframe(st.session_state.expenses_df)
+    if st.session_state.expenses:
+        st.write(st.session_state.expenses)
     else:
         st.write("None")
 
@@ -64,11 +64,12 @@ with tab2:
             category = values["category"]
             cost = values["cost"]
             st.write(f"Expense: {name}, Category: {category}, Cost: ${cost:.2f}")
+        st.text("Make previous data look better and structure it")
 
 with tab3:
     viz = BudgetVisualization(st.session_state.expenses, monthly_income)
     st.pyplot(viz.ideal_budget())
     st.subheader("This is an basic ideal budget")
-    st.text("Will write comparitive data from user here")
     st.pyplot(viz.comparition_chart())
+    st.text("After this we will give a more detailed anaylsis of user data. Probably show in a data structure of percentage differences, and also show differences in text data in money/percent")
 
