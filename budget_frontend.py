@@ -44,6 +44,9 @@ with tab2:
         #Category Pie Chart
         st.pyplot(viz.user_category_chart())
         st.subheader("Category Details")
+        category_totals = viz.calculate_totals_cat()
+        for category, cost in category_totals.items():
+            st.write(f"{category}: ${cost:.2f}")
 
         #Individual Pie Chart
         st.pyplot(viz.user_individual_chart())
