@@ -84,13 +84,21 @@ class BudgetVisualization:
         fig.savefig('myplot.png', transparent=True)
         fig.set_facecolor('none')
         ax.set_facecolor('none')
-        ax.bar(x - w/2, ideal_values, width=w, label='Ideal')
+        ax.bar(x - w/2, ideal_values, width=w, label='Ideal',)
         ax.bar(x + w/2, actual_values, width=w, label='Actual')
         ax.set_xticks(x)
-        ax.set_xticklabels(categories)
-        ax.set_ylabel('Amount ($)')
-        ax.set_title('Ideal vs Actual Spending')
-        ax.legend()
+        ax.set_xticklabels(categories, color='white', fontweight='bold')
+        ax.set_ylabel('Amount ($)', color='white', fontweight='bold')
+        ax.set_title('Ideal vs Actual Spending', color='white', fontweight='bold')
+        ax.yaxis.set_tick_params(colors='white')
+        for label in ax.get_yticklabels():
+            label.set_fontweight('bold')
+        for spine in ax.spines.values():
+            spine.set_color('white')
+        legend = ax.legend()
+        for text in legend.get_texts():
+            text.set_color("white")
+            
 
         return fig
     
