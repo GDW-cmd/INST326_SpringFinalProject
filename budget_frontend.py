@@ -40,5 +40,11 @@ with tab1:
 with tab2:
     if st.session_state.expenses and monthly_income > 0:
         viz = BudgetVisualization(st.session_state.expenses, monthly_income)
+
+        #Category Pie Chart
         st.pyplot(viz.user_category_chart())
+        st.subheader("Category Details")
+
+        #Individual Pie Chart
         st.pyplot(viz.user_individual_chart())
+        st.subheader("Expense Details")
