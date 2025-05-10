@@ -5,6 +5,18 @@ from budget import Budget
 from budget_visualization import BudgetVisualization
 
 
+
+# set a theme for the app
+st.markdown(
+"""
+<style>
+        body {
+            background-color: #FFF5F0;
+            color: #333333;
+<style> 
+""", unsafe_allow_html=True)
+
+
 #Initialize Empty Dictionary
 if 'expenses' not in st.session_state:
     st.session_state.expenses = {}
@@ -12,7 +24,7 @@ if 'expenses' not in st.session_state:
 st.title("Basic Budget Tracker") #Title 
 
 
-tab1, tab2, tab3 = st.tabs(["Input", "Output:Charts", "Ideal Budget Comparitive"]) #Creates tab for input and output(charts for now)
+tab1, tab2, tab3 = st.tabs(["📝Input", "📊Spending Analysis", "Ideal Budget Comparition"]) #Creates tab for input and output(charts for now)
 
 with tab1:
     monthly_income = st.number_input("Monthly Income", min_value = 0.0, step = 0.01, format = "%0.2f") #Monthly income input
