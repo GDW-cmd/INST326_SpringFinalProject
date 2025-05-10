@@ -10,11 +10,13 @@ import pandas as pd
 #Initialize Empty Dictionary
 if 'expenses' not in st.session_state:
     st.session_state.expenses = {}
+if 'expenses_df' not in st.session_state:
+    st.session_state.expenses_df = pd.DataFrame(columns=["Expense", "Cost", "Category"])
 
 st.title("Personal Budget Tracker 💰") #Title 
 
 
-tab1, tab2, tab3 = st.tabs(["📝Input", "📊Spending Analysis", "Ideal Budget Comparition"]) #Creates tab for input and output(charts for now)
+tab1, tab2, tab3 = st.tabs(["Input 📝", "Spending Analysis 📊", "Comparative Analysis 🎯"]) #Creates tab for input and output(charts for now)
 
 with tab1:
     monthly_income = st.number_input("Monthly Income", min_value = 0.0, step = 0.01, format = "%0.2f") #Monthly income input
@@ -31,12 +33,16 @@ with tab1:
             if not expense_name:
                 st.warning("Please enter an expense name.") #If no expense name.
             else:
-                st.session_state.expenses[expense_name] = {'cost': expense_cost, 'category': expense_category}
-                st.success(f"Added '{expense_name}' as a {expense_category} with monthly cost of ${expense_cost}.") #Displays last expense and category + cost.
+                new_expense = pd.DataFrame(
+                [{"Expense": expense_name, "Cost": expense_cost, "Category": expense_category}]
+            )
+            st.session_state.expenses_df = pd.concat(
+                [st.session_state.expenses_df, new_expense], ignore_index=True
+            )
 
     st.subheader("Your Expenses")
-    if st.session_state.expenses:
-        st.write(st.session_state.expenses)
+    if not st.session_state.expenses_df.empty:
+        st.dataframe(st.session_state.expenses_df)
     else:
         st.write("None")
 
