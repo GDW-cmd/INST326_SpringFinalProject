@@ -16,7 +16,7 @@ if 'expenses_df' not in st.session_state:
 st.title("Personal Budget Tracker 💰") #Title 
 
 
-tab1, tab2, tab3 = st.tabs(["Input", "Output:Charts", "Ideal Budget Comparitive"]) #Creates tab for input and output(charts for now)
+tab1, tab2, tab3 = st.tabs(["Input 📝", "Spending Analysis ", "Comparitive Analysis "]) #Creates tab for input and output(charts for now)
 
 with tab1:
     monthly_income = st.number_input("Monthly Income", min_value = 0.0, step = 0.01, format = "%0.2f") #Monthly income input
