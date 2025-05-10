@@ -61,4 +61,5 @@ with tab3:
     st.pyplot(viz.ideal_budget())
     st.subheader("This is an basic ideal budget")
     st.text("Will write comparitive data from user here")
+    st.pyplot(viz.comparition_chart())
 

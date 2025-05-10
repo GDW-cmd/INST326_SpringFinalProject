@@ -77,7 +77,20 @@ class BudgetVisualization:
         categories = ['Needs', 'Wants', 'Savings', 'Unallocated']
         ideal_values = [ideal['Needs'], ideal['Wants'], ideal['Savings'], 0]
         actual_values = [actual['Needs'], actual['Wants'], actual['Savings'], unallocated]
-        differences = [actual[i] - ideal[i] for i in categories]
 
-        pass
+        #Graph
+        w, x = 0.4, np.arange(len(categories))
+        fig, ax = plt.subplots()
+        fig.savefig('myplot.png', transparent=True)
+        fig.set_facecolor('none')
+        ax.set_facecolor('none')
+        ax.bar(x - w/2, ideal_values, width=w, label='Ideal')
+        ax.bar(x + w/2, actual_values, width=w, label='Actual')
+        ax.set_xticks(x)
+        ax.set_xticklabels(categories)
+        ax.set_ylabel('Amount ($)')
+        ax.set_title('Ideal vs Actual Spending')
+        ax.legend()
+
+        return fig
     
