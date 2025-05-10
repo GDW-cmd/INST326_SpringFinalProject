@@ -16,7 +16,7 @@ if 'expenses_df' not in st.session_state:
 st.title("Personal Budget Tracker 💰") #Title 
 
 
-tab1, tab2, tab3 = st.tabs(["Input 📝", "Spending Analysis 📊", "Comparitive Analysis "]) #Creates tab for input and output(charts for now)
+tab1, tab2, tab3 = st.tabs(["Input 📝", "Spending Analysis 📊", "Comparitive Analysis 🎯"]) #Creates tab for input and output(charts for now)
 
 with tab1:
     monthly_income = st.number_input("Monthly Income", min_value = 0.0, step = 0.01, format = "%0.2f") #Monthly income input
@@ -49,12 +49,11 @@ with tab1:
 with tab2:
     if not st.session_state.expenses_df.empty and monthly_income > 0:
 
-        # Convert DataFrame to dictionary
+        # Convert dataFrame to dictionary
         expenses = {
             row["Expense"]: {"cost": row["Cost"], "category": row["Category"]}
             for _, row in st.session_state.expenses_df.iterrows()
         }
-
 
         viz = BudgetVisualization(expenses, monthly_income)
 
@@ -69,11 +68,16 @@ with tab2:
         st.pyplot(viz.user_individual_chart())
         st.subheader("Expense Details")
         for _, row in st.session_state.expenses_df.iterrows():
-            st.write(f"Expense: {row['Expense']}, Category: {row['Category']}, Cost: ${row['Cost']:.2f}")
+            st.write(f"Expense: {row['Expense']}, Category: {row['Category']}, \nCost: ${row['Cost']:.2f}")
 
 
 with tab3:
-    viz = BudgetVisualization(st.session_state.expenses, monthly_income)
+    expenses = {
+        row["Expense"]: {"cost": row["Cost"], "category": row["Category"]}
+        for _, row in st.session_state.expenses_df.iterrows()
+    }
+
+    viz = BudgetVisualization(expenses, monthly_income)
     st.pyplot(viz.ideal_budget())
     st.subheader("This is an basic ideal budget")
     st.pyplot(viz.comparition_chart())
