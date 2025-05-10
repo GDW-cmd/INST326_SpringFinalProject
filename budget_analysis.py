@@ -8,7 +8,6 @@ class BudgetAnalysis:
         self.budget = Budget(expense_dict) #User inputs of all expenses, name : category, cost
         self.monthly_income = monthly_income #User input of income
         self.ideal_percents = {'Needs': 0.5, 'Wants': 0.3, 'Savings': 0.2} #Dictionary of ideal budget
-        pass
 
     def get_ideal_spending(self):
         """
@@ -24,12 +23,21 @@ class BudgetAnalysis:
         }
 
 
-    def compare_with_ideal(self):
+    def budget_differences(self):
         """will compare user's expenses with ideal budget and return values that will be used in chart."""
+        ideal_spending = self.get_ideal_spending() #Ideal spending percentages per category, dict
+        actual_spending = self.budget.get_all_totals() #Instance of getting on totals $ of categories, dict
 
-        user_budget = self.user_category_percent_budget()
+        percent_diffs = {
+            'Needs': round((actual_spending['Needs']/self.monthly_income - self.ideal_percents['Needs']) * 100),
+            'Wants': round((actual_spending['Wants']/self.monthly_income - self.ideal_percents['Wants']) * 100),
+            'Savings': round((actual_spending['Savings']/self.monthly_income - self.ideal_percents['Savings']) * 100)
+        } #Gets percentage difference of actual spending vs ideal, rounds up to integer
+        dollar_diffs = {
+            'Needs': round(actual_spending['Needs'] - ideal_spending['Needs'], 2),
+            'Wants': round(actual_spending['Wants'] - ideal_spending['Wants'], 2),
+            'Savings': round(actual_spending['Savings'] - ideal_spending['Savings'], 2)
+        } #Gets the dollar difference between actual spending vs ideal, rounds up 2 decimals
         
-
-
-        pass
+        return percent_diffs, dollar_diffs #Returns tuple individually
         
