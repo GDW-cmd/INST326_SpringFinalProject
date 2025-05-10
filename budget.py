@@ -19,7 +19,7 @@ class Budget:
             float: Sum of all expenses categorized as savings
         """
         return sum(
-            expense['cost'] for expense in self.expense_dict.values() if expense['category'].lower() == 'saving')
+            expense['cost'] for expense in self.expense_dict.values() if expense['category'].lower() == 'savings')
         
     
     def get_total_needs(self):
@@ -30,7 +30,7 @@ class Budget:
             float: Sum of all expenses categorized as needs
         """
         return sum(
-            expense['cost'] for expense in self.expense_dict.values() if expense['category'].lower() == 'need')
+            expense['cost'] for expense in self.expense_dict.values() if expense['category'].lower() == 'needs')
 
     def get_total_wants(self):
         """
@@ -40,7 +40,7 @@ class Budget:
             dict: dictionary of all summed totals for each budget category:
         """
         return sum(
-            expense['cost'] for expense in self.expense_dict.values() if expense['category'].lower() == 'want') 
+            expense['cost'] for expense in self.expense_dict.values() if expense['category'].lower() == 'wants') 
      
     def get_all_totals(self):
         """Returns dict of category : cost"""
