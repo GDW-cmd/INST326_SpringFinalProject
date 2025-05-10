@@ -3,6 +3,7 @@
 import matplotlib.pyplot as plt
 from budget import Budget
 from budget_analysis import BudgetAnalysis
+import numpy as np
 
 class BudgetVisualization:
     
@@ -65,5 +66,18 @@ class BudgetVisualization:
 
     def comparition_chart(self):
         """Chart comparison to ideal budget"""
+        #Data going to compare, actual spending vs ideal
+        analysis = BudgetAnalysis(self.budget.expense_dict, self.monthly_income)
+        ideal = analysis.get_ideal_spending()
+        actual = self.budget.get_all_totals()
+        total_spent = sum(actual.values()) #Gets total spent
+        unallocated = self.monthly_income - total_spent #unallocated money
+
+        #Categories, differences, and values
+        categories = ['Needs', 'Wants', 'Savings', 'Unallocated']
+        ideal_values = [ideal['Needs'], ideal['Wants'], ideal['Savings'], 0]
+        actual_values = [actual['Needs'], actual['Wants'], actual['Savings'], unallocated]
+        differences = [actual[i] - ideal[i] for i in categories]
+
         pass
     
