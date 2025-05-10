@@ -1,13 +1,9 @@
-# This file takes the user input of expense and income and calculates the total expenses, based on different categories and savings
-
 class Budget:
     '''
-    This class takes user's income and expenses and catrgorizes them into wants, needs and savings.
+    This class gets all totals dollar amount of each category.
 
     Attributes:
-        monthly_income (float): user's monthly income
-        expenses (list): user's expenses {amount, category_name, category_type, description}
-        savings (list):user savings {amount, description}
+        expense_dict (dict): user expense dict, Expense Name as key, then Category and Cost as values.
     '''
 
 
@@ -16,18 +12,33 @@ class Budget:
         
 
     def get_total_savings(self):
-        """Return the total of savings"""
+        """
+        Return sum of savings
+        
+        Returns:
+            float: Sum of all expenses categorized as savings
+        """
         return sum(
             expense['cost'] for expense in self.expense_dict.values() if expense['category'].lower() == 'saving')
         
     
     def get_total_needs(self):
-        """Return sum of needs"""
+        """
+        Return sum of needs
+        
+        Returns:
+            float: Sum of all expenses categorized as needs
+        """
         return sum(
             expense['cost'] for expense in self.expense_dict.values() if expense['category'].lower() == 'need')
 
     def get_total_wants(self):
-        """Return sum of wants"""
+        """
+        Return sum of wants, needs, and savings
+        
+        Returns:
+            dict: dictionary of all summed totals for each budget category:
+        """
         return sum(
             expense['cost'] for expense in self.expense_dict.values() if expense['category'].lower() == 'want') 
      
