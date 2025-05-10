@@ -27,6 +27,8 @@ class BudgetVisualization:
         ax.set_facecolor('none')
         ax.pie(values, labels=labels, autopct='%1.1f%%', textprops={'color':"w"})
 
+        #title
+        ax.set_title("Categorical Expenses", color='white', pad=20, fontweight='bold')
         return fig
 
 
@@ -40,6 +42,9 @@ class BudgetVisualization:
         fig.set_facecolor('none')
         ax.set_facecolor('none')
         ax.pie(values, labels=labels, autopct='%1.1f%%', textprops={'color':"w"})
+        
+        #title
+        ax.set_title("Individual Expenses", color='white', pad=20, fontweight='bold')
         
         return fig
 
