@@ -57,5 +57,8 @@ with tab2:
             st.write(f"Expense: {name}, Category: {category}, Cost: ${cost:.2f}")
 
 with tab3:
-    st.subheader("Brief summary about 20/30/50 rule which is ideal base budget, and then shows data on how far or close user is to it.")
+    viz = BudgetVisualization(st.session_state.expenses, monthly_income)
+    st.pyplot(viz.ideal_budget())
+    st.subheader("This is an basic ideal budget")
+    st.text("Will write comparitive data from user here")
 
