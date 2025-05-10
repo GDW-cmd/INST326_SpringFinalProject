@@ -2,6 +2,7 @@
 
 import matplotlib.pyplot as plt
 from budget import Budget
+from budget_analysis import BudgetAnalysis
 
 class BudgetVisualization:
     
