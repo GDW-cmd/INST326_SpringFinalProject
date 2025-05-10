@@ -12,7 +12,7 @@ if 'expenses' not in st.session_state:
 st.title("Basic Budget Tracker") #Title 
 
 
-tab1, tab2 = st.tabs(["Input", "Output:Charts"]) #Creates tab for input and output(charts for now)
+tab1, tab2, tab3 = st.tabs(["Input", "Output:Charts", "Ideal Budget Comparitive"]) #Creates tab for input and output(charts for now)
 
 with tab1:
     monthly_income = st.number_input("Monthly Income", min_value = 0.0, step = 0.01, format = "%0.2f") #Monthly income input
@@ -55,3 +55,7 @@ with tab2:
             category = values["category"]
             cost = values["cost"]
             st.write(f"Expense: {name}, Category: {category}, Cost: ${cost:.2f}")
+
+with tab3:
+    st.subheader("Brief summary about 20/30/50 rule which is ideal base budget, and then shows data on how far or close user is to it.")
+
