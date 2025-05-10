@@ -47,8 +47,16 @@ with tab1:
         st.write("None")
 
 with tab2:
-    if st.session_state.expenses and monthly_income > 0:
-        viz = BudgetVisualization(st.session_state.expenses, monthly_income)
+    if not st.session_state.expenses_df.empty and monthly_income > 0:
+
+        # Convert DataFrame to dictionary
+        expenses = {
+            row["Expense"]: {"cost": row["Cost"], "category": row["Category"]}
+            for _, row in st.session_state.expenses_df.iterrows()
+        }
+
+
+        viz = BudgetVisualization(expenses, monthly_income)
 
         #Category Pie Chart
         st.pyplot(viz.user_category_chart())
@@ -60,11 +68,9 @@ with tab2:
         #Individual Pie Chart
         st.pyplot(viz.user_individual_chart())
         st.subheader("Expense Details")
-        for name, values in st.session_state.expenses.items():
-            category = values["category"]
-            cost = values["cost"]
-            st.write(f"Expense: {name}, Category: {category}, Cost: ${cost:.2f}")
-        st.text("Make previous data look better and structure it")
+        for _, row in st.session_state.expenses_df.iterrows():
+            st.write(f"Expense: {row['Expense']}, Category: {row['Category']}, Cost: ${row['Cost']:.2f}")
+
 
 with tab3:
     viz = BudgetVisualization(st.session_state.expenses, monthly_income)
