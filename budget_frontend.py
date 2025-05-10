@@ -51,3 +51,7 @@ with tab2:
         #Individual Pie Chart
         st.pyplot(viz.user_individual_chart())
         st.subheader("Expense Details")
+        for name, values in st.session_state.expenses.items():
+            category = values["category"]
+            cost = values["cost"]
+            st.write(f"Expense: {name}, Category: {category}, Cost: ${cost:.2f}")
