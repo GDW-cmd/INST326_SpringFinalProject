@@ -37,7 +37,9 @@ class TestBudget_analysis(unittest.TestCase):
             'video games': {'cost': 120.00, 'category': 'Want'}, #our want  
             'saving account': {'cost': 300.00, 'category': 'Saving'} #our saving  
         } 
+        #This is just a test value the customer would have to put their own income in this instance 
         self.income = 4000
+
 
       
 if __name__ == '__main__':
