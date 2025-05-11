@@ -21,7 +21,7 @@ tab1, tab2, tab3 = st.tabs(["Input 📝", "Spending Analysis 📊", "Comparitive
 
 with tab1:
 
-    date_selected = st.date_input("Select a date", datetime.now())   #Date input for the month of the budget
+    date_selected = st.date_input("Select Date", datetime.now())   #Date input for the month of the budget
     mm_yr_format = date_selected.strftime("%Y-%m")          #Format date to YYYY-MM
 
     if mm_yr_format not in st.session_state.expenses:
@@ -78,15 +78,11 @@ with tab1:
 
 
 with tab2:
-    if not st.session_state.expenses_df.empty and monthly_income > 0:
-
-        # Convert dataFrame to dictionary
-        expenses = {
-            row["Expense"]: {"cost": row["Cost"], "category": row["Category"]}
-            for _, row in st.session_state.expenses_df.iterrows()
-        }
-
-        viz = BudgetVisualization(expenses, monthly_income)
+    selected_month = st.selectbox("Analyze month:", options=available_months, index=0,key="analysis_month")
+    month_data = st.session_state.expenses[selected_month]
+    
+    if month_data['expenses'] and month_data['income'] > 0:
+        viz = BudgetVisualization(month_data['expenses'], month_data['income'])
 
         #Category Pie Chart
         st.pyplot(viz.user_category_chart())
@@ -98,19 +94,36 @@ with tab2:
         #Individual Pie Chart
         st.pyplot(viz.user_individual_chart())
         st.subheader("Expense Details")
-        for _, row in st.session_state.expenses_df.iterrows():
+        selected_df = pd.DataFrame.from_dict(month_data['expenses'], orient='index').reset_index()
+        selected_df.columns = ["Expense", "Cost", "Category"]s
+        for _, row in selected_df.iterrows():
             st.write(f"Expense: {row['Expense']}, Category: {row['Category']}, \nCost: ${row['Cost']:.2f}")
 
 
-with tab3:
-    expenses = {
-        row["Expense"]: {"cost": row["Cost"], "category": row["Category"]}
-        for _, row in st.session_state.expenses_df.iterrows()
-    }
 
-    viz = BudgetVisualization(expenses, monthly_income)
-    st.pyplot(viz.ideal_budget())
-    st.subheader("This is an basic ideal budget")
-    st.pyplot(viz.comparition_chart())
-    st.text("After this we will give a more detailed anaylsis of user data. Probably show in a data structure of percentage differences, and also show differences in text data in money/percent")
+with tab3:
+   with tab3:
+    selected_month = st.selectbox("Compare month:", options=available_months,index=0,key="compare_month")
+    month_data = st.session_state.expenses[selected_month]
+
+    #Check and convert to DataFrame
+    if month_data['expenses']:
+        selected_df = pd.DataFrame.from_dict(month_data['expenses'], orient='index').reset_index()
+        selected_df.columns = ["Expense", "Cost", "Category"]
+    else:
+        selected_df = pd.DataFrame(columns=["Expense", "Cost", "Category"])
+
+    #Display message if income is not set
+    if month_data['income'] == 0.0:
+        st.warning(f"No income set for {selected_month}. Please enter income.")
+    elif selected_df.empty:
+        st.warning(f"No expenses recorded for {selected_month}. Please enter expense.")
+    else:
+        #Display charts if data is present
+        st.subheader(f"Data for {selected_month}")
+        st.dataframe(selected_df)
+        viz = BudgetVisualization(month_data['expenses'], month_data['income'])
+        st.pyplot(viz.ideal_budget())
+        st.pyplot(viz.comparition_chart())
+        st.text("After this we will give a more detailed analysis of user data. Probably show in a data structure of percentage differences, and also show differences in text data in money/percent")
 
