@@ -89,7 +89,12 @@ with tab2:
         st.subheader("Category Details")
         category_totals = viz.calculate_totals_cat()
         for category, cost in category_totals.items():
-            st.write(f"{category}: ${cost:.2f}")
+            col1, col2 = st.columns(2)
+            with col1:
+                st.write(f"{category}")
+            with col2:
+                st.write(f"${cost:.2f}")
+            
 
         #Individual Pie Chart
         st.pyplot(viz.user_individual_chart())
