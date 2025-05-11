@@ -3,6 +3,8 @@
 import unittest
 from budget import Budget 
 from budget_analysis import BudgetAnalysis
+from budget_visualization import BudgetVisualization 
+from matplotlib.figure import Figure 
 
 class TestBudget(unittest.TestCase):
     def setUp(self):
@@ -39,7 +41,7 @@ class TestBudget_analysis(unittest.TestCase):
         } 
         #This is just a test value the customer would have to put their own income in this instance 
         self.monthly_income = 4000
-        self.analysis =(self.expense_dict, self.monthly_income)
+        self.analysis = BudgetAnalysis(self.expense_dict, self.monthly_income)
 
     #testing ideal situation 
     def test_get_ideal_spending(self):
