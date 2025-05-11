@@ -87,7 +87,11 @@ class TestBudgetVisualization(unittest.TestCase):
     def test_user_category_chart(self):
         chart = self.visual.user_category_chart()
         self.assertIsInstance(chart, Figure)
-        
+    
+    def test_user_individual_chart(self):
+        chart = self.visual.user_individual_chart()
+        self.assertIsInstance(chart, Figure)
+
 
 if __name__ == '__main__':
     unittest.main() 
