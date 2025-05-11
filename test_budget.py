@@ -50,7 +50,12 @@ class TestBudget_analysis(unittest.TestCase):
     # This test is to find the percent and dollar difference between real and ideal budget
     def test_budget_differences(self):
         percent_diffs, dollar_diffs = self.analysis.budget_differences()
+    
+        expected_percent_diffs = {'Needs': -5, 'Wants': -26 , 'Savings': -13}
+        expected_dollar_diffs = {'Needs': -180, 'Wants': -1010 , 'Savings': -500}
 
+        self.assertEqual(percent_diffs, expected_percent_diffs)
+        self.assertEqual(dollar_diffs, expected_dollar_diffs)
     
     
 
