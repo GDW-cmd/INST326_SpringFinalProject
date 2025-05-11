@@ -84,6 +84,10 @@ class TestBudgetVisualization(unittest.TestCase):
         self.assertEqual(result, expected_total)
     
 
+    def test_user_category_chart(self):
+        chart = self.visual.user_category_chart()
+        self.assertIsInstance(chart, Figure)
+        
 
 if __name__ == '__main__':
     unittest.main() 
