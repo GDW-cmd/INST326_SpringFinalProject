@@ -38,7 +38,15 @@ class TestBudget_analysis(unittest.TestCase):
             'saving account': {'cost': 300.00, 'category': 'Saving'} #our saving  
         } 
         #This is just a test value the customer would have to put their own income in this instance 
-        self.income = 4000
+        self.monthly_income = 4000
+        self.analysis = (self.expense_dict, self.monthly_income)
+
+    #testing ideal situation 
+    def test_get_ideal_spending(self):
+        result = self.analysis 
+        expected_spent = {'Needs': 2000 , 'Wants': 1200, 'Saving': 8000}
+        self.assertEqual(result, expected_spent) 
+    
 
 
       
