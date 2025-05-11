@@ -30,13 +30,14 @@ class TestBudget(unittest.TestCase):
 class TestBudget_analysis(unittest.TestCase): 
     def setUp(self):
         """Initialize test data before each test"""
-        self.predefined_expense_dict = {
+        self.expense_dict = {
             'rent': {'cost': 1500.00, 'category': 'Need'}, #our need 
             'groceries': {'cost': 320.00, 'category': 'Need'}, #our need 
             'subscriptions': {'cost': 70.00, 'category': 'Want'}, #our want 
             'video games': {'cost': 120.00, 'category': 'Want'}, #our want  
             'saving account': {'cost': 300.00, 'category': 'Saving'} #our saving  
-        }
+        } 
+        self.income = 4000
 
       
 if __name__ == '__main__':
