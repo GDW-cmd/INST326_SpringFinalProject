@@ -95,7 +95,7 @@ with tab2:
         st.pyplot(viz.user_individual_chart())
         st.subheader("Expense Details")
         selected_df = pd.DataFrame.from_dict(month_data['expenses'], orient='index').reset_index()
-        selected_df.columns = ["Expense", "Cost", "Category"]s
+        selected_df.columns = ["Expense", "Cost", "Category"]
         for _, row in selected_df.iterrows():
             st.write(f"Expense: {row['Expense']}, Category: {row['Category']}, \nCost: ${row['Cost']:.2f}")
 
