@@ -96,6 +96,9 @@ class TestBudgetVisualization(unittest.TestCase):
         chart = self.visual.ideal_budget()
         self.assertIsInstance(chart, Figure)
     
+    def test_comparition_chart(self):
+        chart = self.visual.comparition_chart()
+        self.assertIsInstance(chart, Figure)
 
 
 if __name__ == '__main__':
