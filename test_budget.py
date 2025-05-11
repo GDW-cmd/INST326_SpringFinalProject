@@ -49,7 +49,9 @@ class TestBudget_analysis(unittest.TestCase):
     
     # This test is to find the percent and dollar difference between real and ideal budget
     def test_budget_differences(self):
-        
+        percent_diffs, dollar_diffs = self.analysis.budget_differences()
+
+    
     
 
 
