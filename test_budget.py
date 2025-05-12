@@ -33,15 +33,15 @@ class TestBudget_analysis(unittest.TestCase):
     def setUp(self):
         """Initialize test data before each test"""
         self.expense_dict = {
-            'rent': {'cost': 1500.00, 'category': 'Need'}, #our need 
-            'groceries': {'cost': 320.00, 'category': 'Need'}, #our need 
-            'subscriptions': {'cost': 70.00, 'category': 'Want'}, #our want 
-            'video games': {'cost': 120.00, 'category': 'Want'}, #our want  
-            'saving account': {'cost': 300.00, 'category': 'Saving'} #our saving  
+            'rent': {'cost': 1500.00, 'category': 'Needs'}, #our need 
+            'groceries': {'cost': 320.00, 'category': 'Needs'}, #our need 
+            'subscriptions': {'cost': 70.00, 'category': 'Wants'}, #our want 
+            'video games': {'cost': 120.00, 'category': 'Wants'}, #our want  
+            'saving account': {'cost': 300.00, 'category': 'Savings'} #our saving  
         } 
         #This is just a test value the customer would have to put their own income in this instance 
         self.monthly_income = 4000
-        self.analysis = BudgetAnalysis(self.expense_dict, self.monthly_income)
+        self.analysis = BudgetAnalysis(self.expense_dict, self.monthly_income) 
 
     #testing ideal situation 
     def test_get_ideal_spending(self):
@@ -64,11 +64,11 @@ class TestBudgetVisualization(unittest.TestCase):
     def setUp(self):
         """Initialize test data before each test"""
         self.expense_dict = {
-            'rent': {'cost': 1500.00, 'category': 'Need'}, #our need 
-            'groceries': {'cost': 320.00, 'category': 'Need'}, #our need 
-            'subscriptions': {'cost': 70.00, 'category': 'Want'}, #our want 
-            'video games': {'cost': 120.00, 'category': 'Want'}, #our want  
-            'saving account': {'cost': 300.00, 'category': 'Saving'} #our saving  
+            'rent': {'cost': 1500.00, 'category': 'Needs'}, #our need 
+            'groceries': {'cost': 320.00, 'category': 'Needs'}, #our need 
+            'subscriptions': {'cost': 70.00, 'category': 'Wants'}, #our want 
+            'video games': {'cost': 120.00, 'category': 'Wants'}, #our want  
+            'saving account': {'cost': 300.00, 'category': 'Savings'} #our saving  
         } 
         # example income 
         self.monthly_income = 4000
