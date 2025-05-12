@@ -87,7 +87,14 @@ with tab2:
         #Category Pie Chart
         st.pyplot(viz.user_category_chart())
         st.subheader("Category Details")
+        st.divider()
         category_totals = viz.calculate_totals_cat()
+        col1, col2 = st.columns(2)
+        with col1:
+            st.markdown("**Category**") 
+        with col2:
+            st.markdown("**Amount**")
+        st.divider()
         for category, cost in category_totals.items():
             col1, col2 = st.columns(2)
             with col1:
