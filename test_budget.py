@@ -46,7 +46,7 @@ class TestBudget_analysis(unittest.TestCase):
     #testing ideal situation 
     def test_get_ideal_spending(self):
         result = self.analysis 
-        expected_spent = {'Needs': 2000 , 'Wants': 1200, 'Saving': 8000}
+        expected_spent = {'Needs': 2000 , 'Wants': 1200, 'Saving': 800}
         self.assertEqual(result, expected_spent) 
     
     # This test is to find the percent and dollar difference between real and ideal budget
