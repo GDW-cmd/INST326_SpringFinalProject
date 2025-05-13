@@ -14,10 +14,11 @@ if 'expenses' not in st.session_state:
     st.session_state.expenses = {}  
 
 
-st.title("Personal Budget Tracker 💰") #Title 
+st.title("Spend Smart") #Title 
+st.write("A simple budget analysis to track your monthly expenses.") #Description 
 
 
-tab1, tab2, tab3 = st.tabs(["Input 📝", "Spending Analysis 📊", "Comparitive Analysis 🎯"]) #Creates tab for input and output
+tab1, tab2, tab3 = st.tabs(["Add My Expenses 📝", "Get My Spending Analysis 📊", "Get a Comparitive Analysis 🎯"]) #Creates tab for input and output
 
 
 # This tab is where the user can input their monthly income and expenses
@@ -26,9 +27,11 @@ with tab1:
     # input to slect month and year
     col1, col2 = st.columns(2)
     with col1:
-        month = st.selectbox("Month", options=list(range(1, 13)), format_func=lambda x: datetime(1900, x, 1).strftime('%B'))
+        present_month = datetime.now().month
+        month = st.selectbox("Month", options=list(range(1, 13)), format_func=lambda x: datetime(1900, x, 1).strftime('%B'), index=present_month - 1) 
     with col2:
-        year = st.selectbox("Year", options=list(range(datetime.now().year - 2, datetime.now().year + 11)))  #Year range from 2 years ago to 10 years in future
+        present_year = datetime.now().year
+        year = st.selectbox("Year", options=list(range(present_year, present_year + 11)), index=0)  #Year range from 2 years ago to 10 years in future
 
     mm_yr_format = f"{year}-{month:02d}" #Format date to YYYY-MM
 
