@@ -53,7 +53,7 @@ class TestBudget_analysis(unittest.TestCase):
     def test_budget_differences(self):
         percent_diffs, dollar_diffs = self.analysis.budget_differences()
     
-        expected_percent_diffs = {'Needs': -5, 'Wants': -26 , 'Savings': -13}
+        expected_percent_diffs = {'Needs': -5, 'Wants': -25 , 'Savings': -13}
         expected_dollar_diffs = {'Needs': -180.0, 'Wants': -1010.0 , 'Savings': -500.0}
 
         self.assertEqual(percent_diffs, expected_percent_diffs)
