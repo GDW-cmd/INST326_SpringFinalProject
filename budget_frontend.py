@@ -112,12 +112,13 @@ with tab2:
         else:
             selected_df = pd.DataFrame(columns=["Expense", "Cost", "Category", "Percent %"])
         st.dataframe(selected_df, hide_index=True)
+        
 
 
 
 with tab3:
    with tab3:
-    selected_month = st.selectbox("Compare month:", options=available_months,index=0,key="compare_month")
+    selected_month = st.selectbox("Month:", options=available_months,index=0,key="compare_month")
     month_data = st.session_state.expenses[selected_month]
 
     #Check and convert to DataFrame
@@ -134,8 +135,6 @@ with tab3:
         st.warning(f"No expenses recorded for {selected_month}. Please enter expense.")
     else:
         #Display charts if data is present
-        st.subheader(f"Data for {selected_month}")
-        st.dataframe(selected_df)
         viz = BudgetVisualization(month_data['expenses'], month_data['income'])
         st.pyplot(viz.ideal_budget())
         st.pyplot(viz.comparition_chart())
