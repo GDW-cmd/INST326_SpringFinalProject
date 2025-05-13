@@ -88,18 +88,14 @@ with tab2:
         st.subheader("Category Details")
         st.divider()
         category_totals = viz.calculate_totals_cat()
-        col1, col2 = st.columns(2)
-        with col1:
-            st.markdown("**Category**") 
-        with col2:
-            st.markdown("**Amount**")
-        st.divider()
-        for category, cost in category_totals.items():
-            col1, col2 = st.columns(2)
-            with col1:
-                st.write(f"{category}")
-            with col2:
-                st.write(f"${cost:.2f}")
+        if category_totals:
+            category_df = pd.DataFrame({
+                "Category": category_totals.keys(),
+                "Total": [f"${cost:.2f}" for cost in category_totals.values()]
+
+            })
+            st.dataframe(category_df)
+            
         #Individual Pie Chart
         st.pyplot(viz.user_individual_chart())
         st.subheader("Expense Details")
