@@ -89,9 +89,11 @@ with tab2:
         st.divider()
         category_totals = viz.calculate_totals_cat()
         if category_totals:
+            category_sum = sum(category_totals.values())
             category_df = pd.DataFrame({
                 "Category": category_totals.keys(),
-                "Total": [f"${cost:.2f}" for cost in category_totals.values()]
+                "Total": [f"${cost:.2f}" for cost in category_totals.values()],
+                "Percent %" : [f"{(cost/category_sum*100):.1f}" for cost in category_totals.values()]
 
             })
             st.dataframe(category_df, hide_index=True)
@@ -106,9 +108,9 @@ with tab2:
             selected_df = pd.DataFrame.from_dict(month_data['expenses'], orient='index').reset_index()
             selected_df.columns = ["Expense", "Cost", "Category"]
             total_cost = selected_df["Cost"].sum() #Gets total cost of category
-            selected_df["Percent"] = (selected_df["Cost"] / total_cost * 100).round() #Appends Percent category 
+            selected_df["Percent %"] = (selected_df["Cost"] / total_cost * 100).round(1) #Appends Percent category 
         else:
-            selected_df = pd.DataFrame(columns=["Expense", "Cost", "Category", "Percent"])
+            selected_df = pd.DataFrame(columns=["Expense", "Cost", "Category", "Percent %"])
         st.dataframe(selected_df, hide_index=True)
 
 
