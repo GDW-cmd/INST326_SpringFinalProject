@@ -45,8 +45,8 @@ class TestBudget_analysis(unittest.TestCase):
 
     #testing ideal situation 
     def test_get_ideal_spending(self):
-        result = self.analysis 
-        expected_spent = {'Needs': 2000 , 'Wants': 1200, 'Saving': 800}
+        result = self.analysis.get_ideal_spending() 
+        expected_spent = {'Needs': 2000.0 , 'Wants': 1200.0, 'Saving': 800.0}
         self.assertEqual(result, expected_spent) 
     
     # This test is to find the percent and dollar difference between real and ideal budget
@@ -54,7 +54,7 @@ class TestBudget_analysis(unittest.TestCase):
         percent_diffs, dollar_diffs = self.analysis.budget_differences()
     
         expected_percent_diffs = {'Needs': -5, 'Wants': -26 , 'Savings': -13}
-        expected_dollar_diffs = {'Needs': -180, 'Wants': -1010 , 'Savings': -500}
+        expected_dollar_diffs = {'Needs': -180.0, 'Wants': -1010.0 , 'Savings': -500.0}
 
         self.assertEqual(percent_diffs, expected_percent_diffs)
         self.assertEqual(dollar_diffs, expected_dollar_diffs) 
@@ -71,10 +71,10 @@ class TestBudgetVisualization(unittest.TestCase):
             'saving account': {'cost': 300.00, 'category': 'Savings'} #our saving  
         } 
         # example income 
-        self.monthly_income = 4000
+        self.monthly_income = [{'month': 1, 'year': 2025, 'amount': 4000}]
 
         # makeing the budget analysis so we can test it
-        self.analysis = BudgetVisualization(self.expense_dict, self.monthly_income)
+        self.visual = BudgetVisualization(self.expense_dict, self.monthly_income)
 
     #to check if totals by category and leftover money are correct
     def test_calculate_totals_cat(self):
