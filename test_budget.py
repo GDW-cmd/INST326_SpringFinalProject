@@ -46,7 +46,7 @@ class TestBudget_analysis(unittest.TestCase):
     #testing ideal situation 
     def test_get_ideal_spending(self):
         result = self.analysis.get_ideal_spending() 
-        expected_spent = {'Needs': 2000.0 , 'Wants': 1200.0, 'Saving': 800.0}
+        expected_spent = {'Needs': 2000.0 , 'Wants': 1200.0, 'Savings': 800.0}
         self.assertEqual(result, expected_spent) 
     
     # This test is to find the percent and dollar difference between real and ideal budget
@@ -79,7 +79,7 @@ class TestBudgetVisualization(unittest.TestCase):
     #to check if totals by category and leftover money are correct
     def test_calculate_totals_cat(self):
         result = self.visual.calculate_totals_cat()
-        expected_total = {'Needs': 1820.0, 'Wants': 190.0, 'Saving': 300.0, 'left': 1690.0
+        expected_total = {'Needs': 1820.0, 'Wants': 190.0, 'Saving': 300.0, 'Remaining': 1690.0
         }
         self.assertEqual(result, expected_total)
     
