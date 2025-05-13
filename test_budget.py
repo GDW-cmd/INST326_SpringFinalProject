@@ -81,7 +81,7 @@ class TestBudgetVisualization(unittest.TestCase):
         result = self.visual.calculate_totals_cat()
         expected_total = {'Needs': 1820.0, 'Wants': 190.0, 'Savings': 300.0, 'Remaining': 1690.0
         }
-        self.assertEqual(result, expected_total)
+        self.assertEqual(result, expected_total) 
     
 
     def test_user_category_chart(self):
