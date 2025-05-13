@@ -94,8 +94,10 @@ with tab2:
                 "Total": [f"${cost:.2f}" for cost in category_totals.values()]
 
             })
-            st.dataframe(category_df)
-            
+            st.dataframe(category_df, hide_index=True)
+        else:
+            st.write("No category chart available")
+
         #Individual Pie Chart
         st.pyplot(viz.user_individual_chart())
         st.subheader("Expense Details")
@@ -105,7 +107,7 @@ with tab2:
             selected_df.columns = ["Expense", "Cost", "Category"]
         else:
             selected_df = pd.DataFrame(columns=["Expense", "Cost", "Category"])
-        st.dataframe(selected_df)
+        st.dataframe(selected_df, hide_index=True)
 
 
 
