@@ -39,7 +39,8 @@ class BudgetVisualization:
         totals = self.calculate_totals_cat() #Variable of total cost by category
         labels = list(totals.keys())
         values = list(totals.values())
-        fig, ax = plt.subplots()
+        fig, ax = plt.subplots(figsize=(10, 6))
+        
         fig.savefig('myplot.png', transparent=True)
         fig.set_facecolor('none')
         ax.set_facecolor('none')
@@ -59,7 +60,8 @@ class BudgetVisualization:
        
         labels = list(self.budget.expense_dict.keys())
         values = [expense['cost'] for expense in self.budget.expense_dict.values()]
-        fig, ax = plt.subplots()
+        fig, ax = plt.subplots(figsize=(10, 7))
+        
         fig.savefig('myplot.png', transparent=True)
         fig.set_facecolor('none')
         ax.set_facecolor('none')
