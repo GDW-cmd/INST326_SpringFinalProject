@@ -5,6 +5,7 @@ from budget import Budget
 from budget_visualization import BudgetVisualization
 import pandas as pd
 from datetime import datetime
+from budget_analysis import BudgetAnalysis
 
 
 
@@ -133,7 +134,6 @@ with tab3:
     selected_month = st.selectbox("Month:", options=available_months,index=0,key="compare_month")
     month_data = st.session_state.expenses[selected_month]
     st.divider()
-
     #Check and convert to DataFrame
     if month_data['expenses']:
         selected_df = pd.DataFrame.from_dict(month_data['expenses'], orient='index').reset_index()
@@ -149,6 +149,12 @@ with tab3:
     else:
         #Display charts if data is present
         viz = BudgetVisualization(month_data['expenses'], month_data['income'])
+        analysis = BudgetAnalysis(month_data['expenses'], month_data['income'])
+        actual = viz.budget.get_all_totals()
+        total_spent = sum(actual.values())
+        unallocated = month_data['income'] - total_spent
+        category_totals = viz.calculate_totals_cat()
+
         st.header("Ideal Budget")
         st.markdown("""
                  A basic ideal budget also known as the ***50/30/20 rule***, allocates: \n
@@ -157,6 +163,26 @@ with tab3:
                  ***- 20% for your savings***
                  """)
         st.pyplot(viz.ideal_budget())
+        st.divider()
+        st.header("Comparative Analysis")
         st.pyplot(viz.comparition_chart())
+        percent_diffs, dollar_diffs = analysis.budget_differences()
+        ideal_spending = analysis.get_ideal_spending()
+
+
+        if category_totals:
+            category_sum = sum(category_totals.values())
+            comparison_df = pd.DataFrame({
+                "Category" : ['Needs', 'Wants', 'Savings', 'Unallocated'],
+                "Category Budget" : [ f"${category_totals['Needs']:.2f}", f"${category_totals['Wants']:.2f}", f"${category_totals['Savings']:.2f}", f"${category_totals['Remaining']:.2f}" ],
+                "Ideal Budget" : [f"${ideal_spending['Needs']:.2f}", f"${ideal_spending['Wants']:.2f}", f"${ideal_spending['Savings']:.2f}", "$0.00"],
+                "Dollar Difference" : [f"${dollar_diffs['Needs']:.2f}", f"${dollar_diffs['Wants']:.2f}", f"${dollar_diffs['Savings']:.2f}" , f"${unallocated:.2f}"],
+                "Percent Difference" : [f"{percent_diffs['Needs']:.1f}%", f"{percent_diffs['Wants']:.1f}%", f"{percent_diffs['Savings']:.1f}%", f"{(unallocated/month_data['income']*100):.1f}%"]
+            })
+            st.dataframe(comparison_df, hide_index=True)
+        else:
+            st.write("No category chart available")
+
+        
         st.text("After this we will give a more detailed analysis of user data. Probably show in a data structure of percentage differences, and also show differences in text data in money/percent")
 
