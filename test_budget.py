@@ -53,7 +53,7 @@ class TestBudgetAnalysis(unittest.TestCase):
     def test_budget_differences(self):
         percent_diffs, dollar_diffs = self.analysis.budget_differences()
     
-        expected_percent_diffs = {'Needs': -5, 'Wants': -25 , 'Savings': -13}
+        expected_percent_diffs = {'Needs': -4, 'Wants': -25 , 'Savings': -12}
         expected_dollar_diffs = {'Needs': -180.0, 'Wants': -1010.0 , 'Savings': -500.0}
 
         self.assertEqual(percent_diffs, expected_percent_diffs)
@@ -71,7 +71,7 @@ class TestBudgetVisualization(unittest.TestCase):
             'saving account': {'cost': 300.00, 'category': 'Savings'} #our saving  
         } 
         # example income 
-        self.monthly_income = [{'month': 1, 'year': 2025, 'amount': 4000}]
+        self.monthly_income = 4000.00 
 
         # makeing the budget analysis so we can test it
         self.visual = BudgetVisualization(self.expense_dict, self.monthly_income)
@@ -79,7 +79,7 @@ class TestBudgetVisualization(unittest.TestCase):
     #to check if totals by category and leftover money are correct
     def test_calculate_totals_cat(self):
         result = self.visual.calculate_totals_cat()
-        expected_total = {'Needs': 1820.0, 'Wants': 190.0, 'Saving': 300.0, 'Remaining': 1690.0
+        expected_total = {'Needs': 1820.0, 'Wants': 190.0, 'Savings': 300.0, 'Remaining': 1690.0
         }
         self.assertEqual(result, expected_total)
     

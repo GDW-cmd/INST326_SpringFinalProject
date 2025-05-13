@@ -14,7 +14,7 @@ class BudgetVisualization:
 
     def __init__(self, expense_dict, monthly_income):
         self.budget = Budget(expense_dict) #Iniatilize class
-        self.monthly_income = monthly_income #Monthly Income
+        self.monthly_income = float(monthly_income) if not isinstance(monthly_income, (int, float)) else monthly_income 
 
     def calculate_totals_cat(self):
         """

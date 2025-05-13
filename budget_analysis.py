@@ -45,9 +45,9 @@ class BudgetAnalysis:
         actual_spending = self.budget.get_all_totals() #Instance of getting on totals $ of categories, dict
 
         percent_diffs = {
-            'Needs': round((actual_spending['Needs']/self.monthly_income - self.ideal_percents['Needs']) * 100), 
-            'Wants': round((actual_spending['Wants']/self.monthly_income - self.ideal_percents['Wants']) * 100), 
-            'Savings': round((actual_spending['Savings']/self.monthly_income - self.ideal_percents['Savings']) * 100) 
+            'Needs': int(round((actual_spending['Needs']/self.monthly_income - self.ideal_percents['Needs']) * 100)), 
+            'Wants': int(round((actual_spending['Wants']/self.monthly_income - self.ideal_percents['Wants']) * 100)), 
+            'Savings': int(round((actual_spending['Savings']/self.monthly_income - self.ideal_percents['Savings']) * 100) )
         } #Gets percentage difference of actual spending vs ideal by category, rounds up to integer
         dollar_diffs = {
             'Needs': round(actual_spending['Needs'] - ideal_spending['Needs'], 2),
