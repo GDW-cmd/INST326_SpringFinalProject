@@ -9,7 +9,7 @@ from datetime import datetime
 
 
 
-#Initialize Empty Dictionary
+# Initialize empty dictionary for expenses
 if 'expenses' not in st.session_state:
     st.session_state.expenses = {}  
 
@@ -17,12 +17,20 @@ if 'expenses' not in st.session_state:
 st.title("Personal Budget Tracker 💰") #Title 
 
 
-tab1, tab2, tab3 = st.tabs(["Input 📝", "Spending Analysis 📊", "Comparitive Analysis 🎯"]) #Creates tab for input and output(charts for now)
+tab1, tab2, tab3 = st.tabs(["Input 📝", "Spending Analysis 📊", "Comparitive Analysis 🎯"]) #Creates tab for input and output
 
+
+# This tab is where the user can input their monthly income and expenses
 with tab1:
 
-    date_selected = st.date_input("Select Date", datetime.now())   #Date input for the month of the budget
-    mm_yr_format = date_selected.strftime("%Y-%m")          #Format date to YYYY-MM
+    # input to slect month and year
+    col1, col2 = st.columns(2)
+    with col1:
+        month = st.selectbox("Month", options=list(range(1, 13)), format_func=lambda x: datetime(1900, x, 1).strftime('%B'))
+    with col2:
+        year = st.selectbox("Year", options=list(range(datetime.now().year - 2, datetime.now().year + 11)))  #Year range from 2 years ago to 10 years in future
+
+    mm_yr_format = f"{year}-{month:02d}" #Format date to YYYY-MM
 
     if mm_yr_format not in st.session_state.expenses:
         st.session_state.expenses[mm_yr_format] = {
@@ -76,7 +84,7 @@ with tab1:
         st.write("No expenses in this month")
 
 
-
+# This tab gives a detailed analysis of the user's spenging 
 with tab2:
     selected_month = st.selectbox("Analyze month:", options=available_months, index=0,key="analysis_month")
     month_data = st.session_state.expenses[selected_month]
@@ -116,6 +124,7 @@ with tab2:
 
 
 
+# This tab is for the comparitive analysis between user's data and the ideal budget
 with tab3:
    with tab3:
     selected_month = st.selectbox("Month:", options=available_months,index=0,key="compare_month")
