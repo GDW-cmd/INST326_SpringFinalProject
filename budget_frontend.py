@@ -105,8 +105,10 @@ with tab2:
         if month_data['expenses']:
             selected_df = pd.DataFrame.from_dict(month_data['expenses'], orient='index').reset_index()
             selected_df.columns = ["Expense", "Cost", "Category"]
+            total_cost = selected_df["Cost"].sum() #Gets total cost of category
+            selected_df["Percent"] = (selected_df["Cost"] / total_cost * 100).round() #Appends Percent category 
         else:
-            selected_df = pd.DataFrame(columns=["Expense", "Cost", "Category"])
+            selected_df = pd.DataFrame(columns=["Expense", "Cost", "Category", "Percent"])
         st.dataframe(selected_df, hide_index=True)
 
 
