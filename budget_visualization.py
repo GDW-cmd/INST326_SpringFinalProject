@@ -62,6 +62,7 @@ class BudgetVisualization:
         values = [expense['cost'] for expense in self.budget.expense_dict.values()]
         fig, ax = plt.subplots(figsize=(10, 7))
         
+        
         fig.savefig('myplot.png', transparent=True)
         fig.set_facecolor('none')
         ax.set_facecolor('none')
@@ -79,7 +80,7 @@ class BudgetVisualization:
         """
         values = [0.5, 0.3, 0.2]
         labels = ["Needs", "Wants", "Savings"]
-        fig, ax = plt.subplots()
+        fig, ax = plt.subplots(figsize=(10, 6))
         fig.savefig('myplot.png', transparent=True)
         fig.set_facecolor('none')
         ax.set_facecolor('none')
