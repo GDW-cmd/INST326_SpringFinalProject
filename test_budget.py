@@ -29,7 +29,7 @@ class TestBudget(unittest.TestCase):
     def test_get_total_wants(self):
         self.assertEqual(self.budget.get_total_wants(),190)
 
-class TestBudget_analysis(unittest.TestCase): 
+class TestBudgetAnalysis(unittest.TestCase): 
     def setUp(self):
         """Initialize test data before each test"""
         self.expense_dict = {
