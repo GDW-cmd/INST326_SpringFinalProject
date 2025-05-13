@@ -80,13 +80,12 @@ class BudgetVisualization:
         """
         values = [0.5, 0.3, 0.2]
         labels = ["Needs", "Wants", "Savings"]
-        fig, ax = plt.subplots(figsize=(10, 6))
+        fig, ax = plt.subplots(figsize=(6, 4), dpi = 160)
         fig.savefig('myplot.png', transparent=True)
         fig.set_facecolor('none')
         ax.set_facecolor('none')
-        ax.pie(values, labels=labels, autopct='%1.1f%%', textprops={'color':"w"})
-        ax.set_title("Ideal Budget", color='white', pad=20, fontweight='bold') #Title
-
+        ax.pie(values, labels=labels, autopct='%1.1f%%', textprops={'color':'w', 'fontsize': 7})
+        
         return fig
 
     def comparition_chart(self):

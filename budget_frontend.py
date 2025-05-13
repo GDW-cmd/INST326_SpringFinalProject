@@ -132,6 +132,7 @@ with tab3:
    with tab3:
     selected_month = st.selectbox("Month:", options=available_months,index=0,key="compare_month")
     month_data = st.session_state.expenses[selected_month]
+    st.divider()
 
     #Check and convert to DataFrame
     if month_data['expenses']:
@@ -148,6 +149,13 @@ with tab3:
     else:
         #Display charts if data is present
         viz = BudgetVisualization(month_data['expenses'], month_data['income'])
+        st.header("Ideal Budget")
+        st.markdown("""
+                 A basic ideal budget also known as the ***50/30/20 rule***, allocates: \n
+                 ***- 50% of your budget for your needs*** \n
+                 ***- 30% for your wants*** \n
+                 ***- 20% for your savings***
+                 """)
         st.pyplot(viz.ideal_budget())
         st.pyplot(viz.comparition_chart())
         st.text("After this we will give a more detailed analysis of user data. Probably show in a data structure of percentage differences, and also show differences in text data in money/percent")
