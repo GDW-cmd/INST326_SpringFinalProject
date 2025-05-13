@@ -180,9 +180,29 @@ with tab3:
                 "Percent Difference" : [f"{percent_diffs['Needs']:.1f}%", f"{percent_diffs['Wants']:.1f}%", f"{percent_diffs['Savings']:.1f}%", f"{(unallocated/month_data['income']*100):.1f}%"]
             })
             st.dataframe(comparison_df, hide_index=True)
+            
         else:
             st.write("No category chart available")
+        st.divider()
+        st.subheader("Recommendations")
+        st.write(":heavy_minus_sign:" * 14) #Mini Divider 
+        if dollar_diffs['Needs'] > 0: #Needs
+            st.write(f"You're overspending on Needs by ${dollar_diffs['Needs']:.2f}.")
+        else:
+            st.write(f"You're underspending on Needs by ${abs(dollar_diffs['Needs']):.2f}.")
+        if dollar_diffs['Wants'] > 0: #Wants
+            st.write(f"You're overspending on Wants by ${dollar_diffs['Wants']:.2f}.")
+        else:
+            st.write(f"You're underspending on Wants by ${abs(dollar_diffs['Wants']):.2f}")
+        if dollar_diffs['Savings'] > 0:
+            st.write(f"Nice!, you're Saving ${dollar_diffs['Savings']:.2f} more then the basic budget, Keep It Up!.")
+        else:
+            st.write(f"You're under Saving by ${abs(dollar_diffs['Savings']):.2f}, try to allocate more if you can.")
+        if unallocated > 0:
+            st.write(f"You have ${unallocated:.2f} Unallocated. Allocate towards Needs, then Savings, and lastly Wants")
+        else:
+            st.write(f"All your income is Allocated")
 
         
-        st.text("After this we will give a more detailed analysis of user data. Probably show in a data structure of percentage differences, and also show differences in text data in money/percent")
+        
 
