@@ -83,7 +83,6 @@ with tab2:
     
     if month_data['expenses'] and month_data['income'] > 0:
         viz = BudgetVisualization(month_data['expenses'], month_data['income'])
-
         #Category Pie Chart
         st.pyplot(viz.user_category_chart())
         st.subheader("Category Details")
@@ -101,15 +100,16 @@ with tab2:
                 st.write(f"{category}")
             with col2:
                 st.write(f"${cost:.2f}")
-            
-
         #Individual Pie Chart
         st.pyplot(viz.user_individual_chart())
         st.subheader("Expense Details")
-        selected_df = pd.DataFrame.from_dict(month_data['expenses'], orient='index').reset_index()
-        selected_df.columns = ["Expense", "Cost", "Category"]
-        for _, row in selected_df.iterrows():
-            st.write(f"Expense: {row['Expense']}, Category: {row['Category']}, \nCost: ${row['Cost']:.2f}")
+        #Displays Individual Expenses
+        if month_data['expenses']:
+            selected_df = pd.DataFrame.from_dict(month_data['expenses'], orient='index').reset_index()
+            selected_df.columns = ["Expense", "Cost", "Category"]
+        else:
+            selected_df = pd.DataFrame(columns=["Expense", "Cost", "Category"])
+        st.dataframe(selected_df)
 
 
 
