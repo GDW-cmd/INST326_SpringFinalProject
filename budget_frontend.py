@@ -182,7 +182,6 @@ with tab3:
             st.dataframe(comparison_df, hide_index=True)
         else:
             st.write("No category chart available")
-
         st.divider()
         st.subheader("Recommendations")
         st.write(":heavy_minus_sign:" * 14) #Mini Divider 
