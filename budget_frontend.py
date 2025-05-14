@@ -180,9 +180,9 @@ with tab3:
                 "Percent Difference" : [f"{percent_diffs['Needs']:.1f}%", f"{percent_diffs['Wants']:.1f}%", f"{percent_diffs['Savings']:.1f}%", f"{(unallocated/month_data['income']*100):.1f}%"]
             })
             st.dataframe(comparison_df, hide_index=True)
-            
         else:
             st.write("No category chart available")
+
         st.divider()
         st.subheader("Recommendations")
         st.write(":heavy_minus_sign:" * 14) #Mini Divider 
@@ -203,6 +203,5 @@ with tab3:
         else:
             st.write(f"All your income is Allocated")
 
-        
-        
+
 
