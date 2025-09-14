@@ -8,7 +8,7 @@ class BudgetVisualization:
     This class creates all charts used for the website, such as user analysis charts that display user data in a visual format, or comparative charts that compare data to a standard ideal budget.
 
     Attributes:
-        budget (Budget): Budget object of user expense dict, Expense Name as key, then Category and Cost as values.
+        budget (Budget): Budgets object of user expense dict, Expense Name as key, then Category and Cost as values.
         monthly_income (float): Users monthly income
     """
 
